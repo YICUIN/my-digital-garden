@@ -1,0 +1,9 @@
+/*
+ * 全局样式唯一入口：按职责组织所有公共样式，避免页面入口直接依赖多个文件。
+ */
+@import './variables.css';
+@import './base.css';
+@import './layout.css';
+@import './interactions.css';
+@import './archive.css';
+@import './responsive.css';

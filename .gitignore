@@ -1,0 +1,29 @@
+# 依赖和构建产物
+node_modules/
+dist/
+.vite/
+
+# 本地环境与敏感配置
+.env
+.env.*
+!.env.example
+
+# 编辑器和操作系统文件
+.vscode/*
+!.vscode/settings.json
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# 日志与临时文件
+*.log
+logs/
+tmp/
+temp/
+
+# 测试和工具缓存
+coverage/
+.eslintcache
+.cache/
+*.tsbuildinfo

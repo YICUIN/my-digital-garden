@@ -1,0 +1,78 @@
+/*
+ * 响应式样式文件：集中处理移动端布局和断点规则，避免媒体查询散落在业务样式中。
+ */
+@media (max-width: 760px) {
+  .shell {
+    width: min(100% - 32px, 1180px);
+  }
+
+  .topbar {
+    height: 70px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .section-grid,
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .about-links {
+    margin-top: 30px;
+  }
+
+  .intro {
+    padding: 70px 0 78px;
+  }
+
+  .now-card {
+    min-height: 250px;
+  }
+
+  .section-title {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .stack-section,
+  .archive-section,
+  .about {
+    padding: 65px 0;
+  }
+
+  .archive-head {
+    display: block;
+  }
+
+  .archive-head > p {
+    width: auto;
+    margin-top: 16px;
+  }
+
+  .filter-row {
+    flex-wrap: wrap;
+  }
+
+  .resource-count {
+    width: 100%;
+    margin: 8px 0 0;
+  }
+
+  .resource-grid {
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    gap: 12px;
+    font-size: 10px;
+  }
+
+  .about h2,
+  .section-title h2,
+  .archive-head h2 {
+    font-size: 27px;
+  }
+}

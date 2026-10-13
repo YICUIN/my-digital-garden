@@ -1,0 +1,65 @@
+/*
+ * 交互样式文件：提供 hover-lift 等可复用的悬浮、焦点和按钮反馈模板。
+ */
+.primary-button,
+.more-button {
+  padding: 13px 17px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--color-accent);
+  color: #152018;
+  font-weight: 600;
+}
+
+/* 统一的悬浮过渡，避免按钮状态变化过于突兀。 */
+.hover-lift {
+  --hover-accent: var(--color-accent);
+  --hover-shadow: rgba(157, 229, 170, 0.2);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+/* 轻微上移和阴影只改变视觉层，不改变元素占据的布局尺寸。 */
+.hover-lift:hover {
+  box-shadow: 0 8px 22px var(--hover-shadow);
+  transform: translateY(-3px);
+}
+
+/* 键盘焦点使用相同强调色，保证交互不依赖鼠标。 */
+.hover-lift:focus-visible {
+  outline: 2px solid var(--hover-accent);
+  outline-offset: 3px;
+}
+
+.primary-button span,
+.more-button span {
+  padding-left: 18px;
+}
+
+.hover-lift:hover .button-arrow {
+  transform: translateY(4px);
+}
+
+.text-link {
+  font-size: 14px;
+}
+
+.text-link span {
+  margin-left: 9px;
+}
+
+nav a:hover,
+.text-link:hover {
+  color: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hover-lift,
+  .hover-lift .button-arrow {
+    transition-duration: 1ms;
+  }
+}

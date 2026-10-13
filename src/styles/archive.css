@@ -1,0 +1,117 @@
+/*
+ * 内容归档样式文件：集中维护技术栈、资源筛选、资源卡片及其标签布局。
+ */
+.resource-type {
+  font: 12px var(--font-mono);
+}
+
+.archive-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.archive-head > p {
+  width: 275px;
+  margin: 0;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 40px 0 18px;
+}
+
+.filter-row button {
+  padding: 8px 13px;
+  border: 1px solid #3a4647;
+  border-radius: 3px;
+  background: transparent;
+  color: #a6b0ad;
+  font-size: 13px;
+}
+
+.filter-row button.active,
+.filter-row button:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.resource-count {
+  margin-left: auto;
+  color: #73807d;
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.resource-card {
+  min-height: 185px;
+  padding: 20px;
+  border: 1px solid #2d393a;
+  border-radius: 5px;
+  background: #151c1e;
+  transition:
+    transform 0.18s,
+    border-color 0.18s;
+}
+
+.resource-card:hover {
+  border-color: #647b75;
+  transform: translateY(-3px);
+}
+
+.resource-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.save-button {
+  border: 0;
+  background: transparent;
+  color: #76837f;
+  font-size: 20px;
+  line-height: 14px;
+}
+
+.save-button.saved {
+  color: #f0ca70;
+}
+
+.resource-card h3 {
+  margin: 26px 0 8px;
+  font-size: 18px;
+}
+
+.resource-card p {
+  margin-bottom: 16px;
+  color: #8e9b97;
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.tags {
+  display: flex;
+  gap: 7px;
+}
+
+.tags span {
+  padding: 3px 7px;
+  border-radius: 2px;
+  background: #20292a;
+  color: #8e9b97;
+  font-size: 11px;
+}
+
+.more-button {
+  display: block;
+  margin: 30px auto 0;
+  border: 1px solid #3b4848;
+  background: transparent;
+  color: #c3ceca;
+  font-size: 13px;
+}

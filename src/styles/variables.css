@@ -1,0 +1,16 @@
+/*
+ * 设计变量文件：集中管理颜色、字体等全局令牌，避免相同值散落在多个文件中。
+ */
+:root {
+  --font-body: 'Noto Sans SC', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  /* 正文基准字号，保证深色背景下的长时间阅读舒适度。 */
+  --font-size-body: 16px;
+  --color-page: #101418;
+  --color-text: #e7ece9;
+  --color-muted: #9aa6a5;
+  --color-subtle: #aeb9b5;
+  --color-accent: #9de5aa;
+  --color-line: #2b3436;
+  --color-panel: #172022;
+}

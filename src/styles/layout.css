@@ -1,0 +1,265 @@
+/*
+ * 页面布局文件：负责外层容器、导航、首屏、内容分区和页脚的空间关系。
+ */
+.shell {
+  width: min(1180px, calc(100% - 48px));
+  margin: auto;
+}
+
+.topbar {
+  display: flex;
+  height: 84px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.brand,
+.eyebrow,
+.section-number,
+.card-heading,
+.now-footer,
+footer,
+.resource-count {
+  font: 12px var(--font-mono);
+  letter-spacing: 0;
+}
+
+.brand {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.brand-mark {
+  color: var(--color-accent);
+  font-size: 22px;
+  vertical-align: -2px;
+}
+
+nav {
+  display: flex;
+  gap: 30px;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+/* 导航在桌面端占据中间的可用空间，避免菜单缩成一小段挤在中心。 */
+.topbar nav {
+  flex: 1;
+  justify-content: center;
+  gap: 38px;
+  margin: 0 42px;
+}
+
+/* 增大菜单的点击区域，让文本在深色背景中更容易扫描和操作。 */
+.topbar nav a {
+  position: relative;
+  padding: 10px 4px;
+  color: #c0cbc7;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.topbar nav a::after {
+  position: absolute;
+  right: 4px;
+  bottom: 2px;
+  left: 4px;
+  height: 2px;
+  background: var(--color-accent);
+  content: '';
+  opacity: 0;
+  transform: scaleX(0.4);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.topbar nav a:hover {
+  color: var(--color-accent);
+}
+
+.topbar nav a:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.icon-button {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #3a4647;
+  border-radius: 4px;
+  background: transparent;
+  color: #dce4df;
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+
+.intro {
+  padding: 112px 0 136px;
+  align-items: center;
+}
+
+.eyebrow {
+  margin: 0 0 22px;
+  color: var(--color-accent);
+}
+
+.status-dot {
+  margin-right: 7px;
+  font-size: 15px;
+}
+
+h1 {
+  margin-bottom: 25px;
+  font-size: clamp(42px, 6vw, 78px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+h1 em {
+  color: var(--color-accent);
+  font-style: normal;
+}
+
+.lead {
+  max-width: 470px;
+  /* 首屏介绍是主要阅读内容，略微放大并增加行距。 */
+  color: var(--color-subtle);
+  font-size: 17px;
+  line-height: 1.95;
+}
+
+.intro-actions {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-top: 36px;
+}
+
+.now-card {
+  display: flex;
+  min-height: 315px;
+  flex-direction: column;
+  padding: 22px;
+  border: 1px solid #344143;
+  border-radius: 5px;
+  background: var(--color-panel);
+}
+
+.about {
+  padding: 92px 0 112px;
+  border-top: 1px solid var(--color-line);
+}
+
+.about-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 链接列表贴近左下方，作为个人入口，同时保持与右侧正文的视觉平衡。 */
+.about-links {
+  margin-top: auto;
+}
+
+.about-links a {
+  display: flex;
+  max-width: 260px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 0;
+  border-top: 1px solid #344143;
+  color: #c7d0cc;
+  font-size: 15px;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    padding-left 180ms ease;
+}
+
+.about-links a:last-child {
+  border-bottom: 1px solid #344143;
+}
+
+.about-links a span:last-child {
+  color: #71817d;
+  font: 14px var(--font-mono);
+  transition: transform 180ms ease;
+}
+
+.about-links a:hover {
+  padding-left: 8px;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.about-links a:hover span:last-child {
+  color: var(--color-accent);
+  transform: translate(3px, -3px);
+}
+
+.section-number {
+  margin: 8px 0;
+  color: var(--color-accent);
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 45px;
+}
+
+.about h2,
+.section-title h2,
+.archive-head h2 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.about-text {
+  color: var(--color-subtle);
+  font-size: 15px;
+  line-height: 1.95;
+}
+
+.about-text p + p {
+  color: #d5ddd8;
+}
+
+.stack-section,
+.archive-section {
+  padding: 92px 0 104px;
+  border-top: 1px solid var(--color-line);
+}
+
+.section-title {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: baseline;
+}
+
+.section-title > p:last-child,
+.archive-head > p {
+  color: #8d9a96;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 26px 0 38px;
+  border-top: 1px solid var(--color-line);
+  color: #75817e;
+}
+
+footer p {
+  margin: 0;
+}
