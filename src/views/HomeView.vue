@@ -79,22 +79,39 @@
         <span class="resource-count">{{ filteredResources.length }} items</span>
       </div>
       <div class="resource-grid">
-        <article v-for="resource in visibleResources" :key="resource.title" class="resource-card">
-          <div class="resource-top">
-            <span class="resource-type" :style="{ color: resource.color }">{{ resource.type }}</span
-            ><button
-              :class="['save-button', { saved: store.savedResources.includes(resource.title) }]"
-              :aria-label="`收藏 ${resource.title}`"
-              @click="store.toggleSaved(resource.title)"
-            >
-              ⌑
-            </button>
-          </div>
-          <h3>{{ resource.title }}</h3>
-          <p>{{ resource.note }}</p>
-          <div class="tags">
-            <span v-for="tag in resource.tags" :key="tag">{{ tag }}</span>
-          </div>
+        <article
+          v-for="resource in visibleResources"
+          :key="resource.id ?? resource.title"
+          class="resource-card"
+          :class="{ 'is-link': resource.to }"
+        >
+          <!-- 有详情页的卡片整块可点：内容包进链接，收藏按钮留在链接外，避免按钮嵌套在 <a> 里。 -->
+          <component
+            :is="resource.to ? RouterLink : 'div'"
+            v-bind="resource.to ? { to: resource.to } : {}"
+            class="resource-body"
+          >
+            <div class="resource-top">
+              <span class="resource-type" :style="{ color: resource.color }">
+                {{ resource.type }}
+              </span>
+            </div>
+            <h3>{{ resource.title }}</h3>
+            <p>{{ resource.note }}</p>
+            <div class="tags">
+              <span v-for="tag in resource.tags" :key="tag">{{ tag }}</span>
+            </div>
+            <span v-if="resource.to" class="resource-enter">
+              {{ resource.detailLabel ?? '查看详情' }} <span aria-hidden="true">↗</span>
+            </span>
+          </component>
+          <button
+            :class="['save-button', { saved: store.savedResources.includes(resource.title) }]"
+            :aria-label="`收藏 ${resource.title}`"
+            @click="store.toggleSaved(resource.title)"
+          >
+            ⌑
+          </button>
         </article>
       </div>
       <button v-if="filteredResources.length > 4" class="more-button" @click="showAll = !showAll">
@@ -112,6 +129,7 @@
 
 <script setup>
 import { computed, ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import { useSpaceStore } from '../stores/space'
 import { resources } from '../data/resources'
 import { stackItems } from '../data/stackItems'

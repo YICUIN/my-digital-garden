@@ -1,4 +1,18 @@
+import { evernightArchive } from './archive/evernight'
+
+/**
+ * 归档卡片数据。
+ * - 普通条目只有展示字段，卡片保持纯展示；
+ * - 带 to 的条目会整块变成可点击链接，进入对应详情页；
+ * - 游戏卡片复用档案里的 card 摘要，避免首页与详情页各写一套介绍。
+ */
 export const resources = [
+  {
+    id: evernightArchive.id,
+    ...evernightArchive.card,
+    to: `/archive/${evernightArchive.id}`,
+    detailLabel: '查看游戏档案'
+  },
   {
     title: 'Vue 3 Composition API',
     type: '技术',

@@ -50,8 +50,9 @@
 }
 
 .resource-card {
+  position: relative;
+  display: flex;
   min-height: 185px;
-  padding: 20px;
   border: 1px solid #2d393a;
   border-radius: 5px;
   background: #151c1e;
@@ -65,12 +66,35 @@
   transform: translateY(-3px);
 }
 
+/* 可跳转的卡片整块是链接，用略亮的边框提示它可以点进去。 */
+.resource-card.is-link {
+  border-color: #3f4f4d;
+}
+
+/* 内边距放在正文层，链接才能覆盖整张卡片（含原来的留白区域）。 */
+.resource-body {
+  display: block;
+  flex: 1;
+  padding: 20px;
+  color: inherit;
+}
+
+.resource-body:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 6px;
+}
+
 .resource-top {
   display: flex;
   justify-content: space-between;
 }
 
+/* 收藏按钮绝对定位在卡片右上角，保持独立于正文链接的点击区域。 */
 .save-button {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  z-index: 1;
   border: 0;
   background: transparent;
   color: #76837f;
@@ -92,6 +116,20 @@
   color: #8e9b97;
   font-size: 14px;
   line-height: 1.85;
+}
+
+/* 进入详情的提示沿用工具箱卡片的弱化文字，hover 时再变成强调色。 */
+.resource-enter {
+  display: inline-flex;
+  gap: 6px;
+  margin-top: 18px;
+  color: #71817d;
+  font: 11px var(--font-mono);
+  transition: color 180ms ease;
+}
+
+.resource-card.is-link:hover .resource-enter {
+  color: var(--color-accent);
 }
 
 .tags {
